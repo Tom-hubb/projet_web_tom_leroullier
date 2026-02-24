@@ -1,0 +1,666 @@
+/* ===============================
+   SECTION CONFIGURATION GLOBAL
+==================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", serif;
+    background-color: #1A1325;
+    color: #F2F1F3;
+    line-height: 1.7;
+}
+
+
+/* ===============================
+   SECTION RESPONSIVE
+==================================*/
+
+/* Responsive Accueil */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .explorer-grid img {
+        width: 80px;
+    }
+}
+
+/* Responsive Casting */
+@media (max-width: 1024px) {
+    .films-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .films-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Responsive Sortilèges */
+@media (max-width: 850px) {
+    #sortilèges table {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 650px) {
+    #sortilèges {
+        width: 95%;
+    }
+
+    #sortilèges table,
+    #sortilèges thead {
+        display: block;
+    }
+
+    #sortilèges thead {
+        display: none;
+    }
+
+    #sortilèges tbody tr {
+        margin-bottom: 15px;
+        display: block;
+        border: 1px solid #BA974E33;
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    #sortilèges tbody th {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 5px;
+        border: none;
+    }
+
+    #sortilèges tbody th::before {
+        color: #BA974E;
+        font-weight: bold;
+        content: attr(data-label);
+    }
+}
+
+
+/* ===============================
+   SECTION NAVIGATION
+==================================*/
+header {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #BA974E44;
+    margin-bottom: 60px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #F2F1F3;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #BA974E;
+    text-shadow: 0 0 8px #BA974E;
+}
+
+
+/* ===============================
+   SECTION FOOTER
+==================================*/
+
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #BA974E44;
+    opacity: 0.8;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer a{
+    color: #BA974E;
+}
+
+
+/* ===============================
+   SECTION INDEX
+==================================*/
+
+.index {
+    height: 60vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+    /* url('./assets/background_hp.jpg') center/cover no-repeat; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #BA974E44;
+}
+
+.index h1 {
+    font-size: 3rem;
+    color: #BA974E;
+    text-shadow: 0 0 15px #BA974E;
+    margin-bottom: 15px;
+}
+
+.index p {
+    font-size: 1.3rem;
+    color: #F2F1F3;
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+.index a {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: black;
+    background: #BA974E;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.index a:hover {
+    box-shadow: 0 0 12px #BA974E;
+    transform: translateY(-3px);
+}
+
+/* Style intro */
+
+.intro {
+    width: 80%;
+    margin: 60px auto 40px auto;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2.2rem;
+    color: #BA974E;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #BA974E66;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* Style Explorer */
+
+.explorer {
+    width: 90%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.explorer h2 {
+    font-size: 2rem;
+    color: #BA974E;
+    margin-bottom: 30px;
+}
+
+.explorer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.explorer-grid a {
+    display: block;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #BA974E33;
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.explorer-grid a:hover {
+    border-color: #BA974E;
+    transform: translateY(-6px);
+    box-shadow: 0 0 12px #BA974E55;
+}
+
+.explorer-grid img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 5px #BA974E66);
+}
+
+.explorer-grid h3 {
+    color: #BA974E;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.explorer-grid p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+
+/* ===============================
+   SECTION CASTING
+==================================*/
+
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.film-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #BA974E33;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.film-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #BA974E;
+}
+
+.film-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.film-card h3 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 15px;
+    min-height: 50px;
+}
+
+/* Style pour les boutons de lien*/
+.btn-link {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border-color: #BA974E;
+}
+
+.btn-link:hover {
+    background-color: #BA974E;
+    color: white;
+}
+
+/* Style pour le casting des films */ 
+#casting-detail{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+main#casting-detail {
+  margin-top: 0;
+  padding-top: 16px;
+}
+
+#casting-detail h1 {
+  margin-top: 0;
+  margin-bottom: 18px; 
+}
+
+#casting-detail .principaux h2 {
+  margin-top: 8px;        
+  margin-bottom: 18px;
+}
+
+#casting-detail .secondaires h2 {
+  margin-top: 8px;        
+  margin-bottom: 18px;
+}
+
+
+
+.actors-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.actor-card {
+    width: 200px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid #BA974E33;
+
+}
+
+.actor-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.action-retour {
+    margin-top: 30px;
+}
+
+
+/* ===============================
+   SECTION SORTILEGES
+==================================*/
+
+#sortilèges {
+    width: 85%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+#sortilèges h2 {
+    font-size: 2.4rem;
+    color: #BA974E;
+    margin-bottom: 40px;
+    text-shadow: 0 0 12px #BA974E80;
+}
+
+/* Tableau sortilège */
+
+#sortilèges table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(6px);
+    border: 1px solid #BA974E33;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px #00000040;
+}
+
+/* En-têtes */
+#sortilèges thead th {
+    background: rgba(186, 151, 78, 0.15);
+    color: #BA974E;
+    font-size: 1.2rem;
+    padding: 18px;
+    border-bottom: 1px solid #BA974E44;
+}
+
+/* Lignes */
+#sortilèges tbody tr {
+    transition: 0.25s;
+}
+
+#sortilèges tbody tr:hover {
+    background: rgba(186, 151, 78, 0.08);
+}
+
+/* Cellules */
+#sortilèges tbody th {
+    padding: 15px;
+    border-bottom: 1px solid #BA974E22;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1rem;
+    color: #F2F1F3;
+}
+
+/* Correction alignement */
+#sortilèges tbody tr:last-child th {
+    border-bottom: none;
+}
+
+
+/* ===============================
+   SECTION HORCRUXES
+==================================*/
+
+#Horcruxes {
+    width: 85%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+#Horcruxes h2 {
+    font-size: 2.4rem;
+    color: #BA974E;
+    margin-bottom: 40px;
+    text-shadow: 0 0 12px #BA974E80;
+}
+
+/* Grille */
+.horcruxes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* Cartes */
+.horcruxe-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #BA974E33;
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.horcruxe-card:hover {
+    transform: translateY(-6px);
+    border-color: #BA974E;
+    box-shadow: 0 0 12px #BA974E55;
+}
+
+/* Images */
+.horcruxe-card img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 6px #BA974E55);
+}
+
+/* Titres */
+.horcruxe-card h3 {
+    color: #BA974E;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+/* Texte */
+.horcruxe-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+
+/* ===============================
+   SECTION RELIQUES DE LA MORT
+==================================*/
+#relique_de_la_mort {
+    width: 80%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+#relique_de_la_mort h2 {
+    font-size: 2.4rem;
+    color: #BA974E;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #BA974E80;
+}
+
+#relique_de_la_mort > p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 50px;
+}
+
+.titre-relique {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;            
+    margin-bottom: 40px;   
+}
+
+.titre-relique h2 {
+    margin: 0;
+}
+
+.titre-relique img {
+    width: 120px;
+    height: auto;
+    position: relative;
+    filter: drop-shadow(0 0 10px #BA974E55);
+    top: 30px;
+}
+
+/* Style des containers */
+.relique-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.Relique {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    width: 280px;
+    border-radius: 12px;
+    border: 1px solid #BA974E33;
+    transition: 0.3s;
+    backdrop-filter: blur(4px);
+}
+
+.Relique:hover {
+    transform: translateY(-8px);
+    border-color: #BA974E;
+    box-shadow: 0 0 20px #BA974E55;
+}
+
+.Relique img {
+    width: 140px;
+    display: block;
+    margin: 0 auto 20px auto;
+    filter: drop-shadow(0 0 6px #BA974E55);
+}
+
+.Relique h3 {
+    color: #BA974E;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    text-shadow: 0 0 6px #BA974E55;
+}
+
+
+/* ===============================
+   SECTION CONTACT
+==================================*/
+#contact-section {
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto; 
+    text-align: left;  
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #BA974E44;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.btn-envoyer {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-envoyer:hover {
+    background-color: #BA974E;
+}
