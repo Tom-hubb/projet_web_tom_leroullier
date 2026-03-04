@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Message envoyé ! – Le Chicaneur Numérique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!--==========================================================================
+   DANS CETTE PAGE LE CODE QUI EST DANS LA BALISE <STYLE> A ETE GENERE PAR IA
+==============================================================================-->
+
+
+  <style>
+    :root{
+      --gold:#BA974E;
+      --dark:#1A1325;
+      --light:#F2F1F3;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 50% -10%, #2a203b 0%, var(--dark) 60%, #0a0810 100%);
+      color:var(--light);
+      font-family: Georgia, serif;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .wrap{
+      text-align:center;
+      padding:40px 24px;
+      max-width:720px;
+      width:min(92vw, 720px);
+      border:1px solid #ba974e55;
+      border-radius:14px;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      position:relative;
+      box-shadow: 0 0 40px #000 inset, 0 0 24px #000;
+    }
+
+    /* Titre lumineux doré */
+    .title{
+      font-size: clamp(28px, 5vw, 48px);
+      color: var(--gold);
+      letter-spacing: .5px;
+      margin: 0 0 10px 0;
+      text-shadow: 0 0 12px rgba(186,151,78,.8), 0 0 28px rgba(186,151,78,.35);
+      position:relative;
+      animation: goldPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes goldPulse{
+      0%,100%{ text-shadow: 0 0 10px rgba(186,151,78,.7), 0 0 24px rgba(186,151,78,.25); }
+      50%{ text-shadow: 0 0 20px rgba(186,151,78,1), 0 0 42px rgba(186,151,78,.45); }
+    }
+
+    .subtitle{
+      opacity:.9; margin:0 0 20px 0; font-size:clamp(14px,2.4vw,18px);
+    }
+
+    /* Ligne magique */
+    .divider{
+      height:1px; width:180px; margin:18px auto 26px auto; position:relative;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      box-shadow:0 0 12px rgba(186,151,78,.6);
+    }
+
+    /* Boutons */
+    .actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 18px; border-radius:10px; font-weight:700;
+      transition:.25s; letter-spacing:.2px;
+      border:1px solid #ba974e55;
+      background: rgba(255,255,255,0.05); color:var(--light);
+    }
+    .btn:hover{ transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 0 14px rgba(186,151,78,.5);}
+    .btn-primary{ background: var(--gold); color:#1A1325; border-color:transparent; }
+    .btn-primary:hover{ box-shadow:0 0 16px rgba(186,151,78,.8); }
+
+    /* Étincelles */
+    .spark{
+      position:absolute; top:50%; left:50%;
+      width:6px; height:6px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--gold) 45%, transparent 70%);
+      filter: drop-shadow(0 0 6px rgba(186,151,78,.8));
+      animation: fly 2.6s ease-in-out forwards;
+      pointer-events:none;
+      opacity:0;
+    }
+    @keyframes fly{
+      0%{ opacity:0; transform: translate(-50%, -50%) scale(.4); }
+      8%{ opacity:1; }
+      100%{ opacity:0; transform: translate(var(--tx), var(--ty)) scale(.2) rotate(360deg); }
+    }
+
+    /* Traînée magique (trait fin) */
+    .trail{
+      position:absolute; inset:0; pointer-events:none;
+    }
+    .trail::before{
+      content:""; position:absolute; width:100px; height:2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      top: var(--y); left: var(--x);
+      transform: rotate(var(--a));
+      opacity:.6; filter: blur(.6px) drop-shadow(0 0 6px rgba(186,151,78,.8));
+      animation: fade 900ms ease-out forwards;
+    }
+    @keyframes fade{
+      from{ opacity:.8 } to{ opacity:0 }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap" aria-live="polite">
+    <h1 class="title">Message envoyé !</h1>
+    <p class="subtitle">Un hibou part vous prévenir 🦉</p>
+    <div class="divider"></div>
+    <p style="margin:0 0 22px 0; opacity:.95;">
+      Merci pour votre message. Nous revenons vers vous très vite.
+    </p>
+
+    <div class="actions">
+      <a href="./index.html" class="btn btn-primary">🏰 Retour à l’accueil</a>
+      <a href="./contact.html" class="btn">✉️ Envoyer un autre message</a>
+    </div>
+
+    <!-- Étincelles conteneur -->
+    <div id="sparks"></div>
+    <!-- Traînées -->
+    <div id="trails" class="trail"></div>
+  </div>
+
+  <script>
+    // Génère des étincelles dorées et des traits "magiques"
+    const sparks = document.getElementById('sparks');
+    const trails = document.getElementById('trails');
+
+    function castSpellBurst(){
+      for(let i=0;i<26;i++){
+        const s = document.createElement('div');
+        s.className = 'spark';
+        // Déplacement aléatoire depuis le centre
+        const angle = Math.random()*2*Math.PI;
+        const radius = 120 + Math.random()*160;
+        const tx = Math.cos(angle)*radius;
+        const ty = Math.sin(angle)*radius;
+        s.style.setProperty('--tx', `${tx}px`);
+        s.style.setProperty('--ty', `${ty}px`);
+        s.style.animationDelay = `${Math.random()*350}ms`;
+        sparks.appendChild(s);
+        // Retire l’étincelle après animation
+        s.addEventListener('animationend', ()=> s.remove());
+
+        // Trace une petite trainée
+        const t = document.createElement('div');
+        t.className = 'trail';
+        const aDeg = (angle*180/Math.PI).toFixed(1)+'deg';
+        t.style.setProperty('--a', aDeg);
+        // Place la trainée autour du centre de la carte
+        const rect = document.body.getBoundingClientRect();
+        const cx = window.innerWidth/2 + Math.cos(angle)*(radius-40);
+        const cy = window.innerHeight/2 + Math.sin(angle)*(radius-40);
+        t.style.setProperty('--x', cx+'px');
+        t.style.setProperty('--y', cy+'px');
+        trails.appendChild(t);
+        setTimeout(()=> t.remove(), 900);
+      }
+    }
+
+    // Lancement automatique + léger “re‑burst”
+    window.addEventListener('load', ()=>{
+      castSpellBurst();
+      setTimeout(castSpellBurst, 1200);
+    });
+  </script>
+
+</body>
+</html>
